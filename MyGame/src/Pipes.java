@@ -82,18 +82,11 @@ public class Pipes {
 		Graphics2D g2 = (Graphics2D) g;
 
 		try {
-			ground = ImageIO.read(new File("res/ground.png"));
+			ground = ImageIO.read(new File("res/ground2.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
-		}	
-
-		try {
-			ground2 = ImageIO.read(new File("res/ground.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}	
+		}		
 		
 		if(this.getScore() < 10) g2.setColor(Color.GREEN);
 		
@@ -107,7 +100,9 @@ public class Pipes {
 		
 		else if(this.getScore() < 20) g2.setColor(Color.ORANGE);
 		
-		else g2.setColor(Color.RED);
+		else if(this.getScore() < 30) g2.setColor(Color.RED);
+		
+		else g2.setColor(colors[random.nextInt(colors.length - 1)]);
 		
 		g2.fillRect(this.xPos, 0, this.width, this.getHeight2());
 
@@ -118,10 +113,10 @@ public class Pipes {
 		g2.setColor(Color.BLACK);
 
 		g2.drawRect(this.xPos, -1, this.width, this.getHeight2());
+		
+		g2.drawImage(ground, this.groundX, 700, 600, 75, null);
 
-		g2.drawImage(ground, this.groundX, 700, 610, 75, null);
-
-		g2.drawImage(ground2, this.groundX2, 700, 610, 75, null);
+		g2.drawImage(ground, this.groundX2, 700, 600, 75, null);
 
 		this.xPos -= this.RECT_SPEED;
 
@@ -150,18 +145,34 @@ public class Pipes {
 			this.setHeight2(this.getTopOfPipe() - 150);
 			this.setBottomOfPipe(this.getHeight2());
 
+		} 
+		
+		if(this.getGroundX() + 600 <= 0) this.setGroundX(600);
+		
+		if(this.getGroundX2() + 600 <= 0) this.setGroundX2(600);
+
+		if(this.RECT_SPEED >= 14) {
+
+			this.RECT_SPEED = 14;
+
 		}
 
-		if(this.groundX + 600 <= 0) this.groundX = 600;
+	}
 
-		if(this.groundX2 + 600 <= 0) this.groundX2 = 600;
+	public int getGroundX() {
+		return groundX;
+	}
 
-		if(this.RECT_SPEED >= 13) {
+	public int getGroundX2() {
+		return groundX2;
+	}
 
-			this.RECT_SPEED = 13;
+	public void setGroundX(int groundX) {
+		this.groundX = groundX;
+	}
 
-		}
-
+	public void setGroundX2(int groundX2) {
+		this.groundX2 = groundX2;
 	}
 
 	public int getwidth() {

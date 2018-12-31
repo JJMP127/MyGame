@@ -48,6 +48,8 @@ public class Background {
 	
 	Image background2;
 	
+	Image ground;
+	
 	public void draw(Graphics g) {
 		
 		try {
@@ -64,6 +66,13 @@ public class Background {
 			System.exit(1);
 		}	
 		
+		try {
+			ground = ImageIO.read(new File("res/ground2.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}	
+		
 		Graphics2D g2 = (Graphics2D) g;
 		
 		sun = new Ellipse2D.Double(this.sunX, this.sunY, this.sunSize, this.sunSize);
@@ -75,6 +84,10 @@ public class Background {
 		g2.drawImage(background, this.getBackgroundX1(), this.getBackgroundY(), this.width, this.height, null);
 		
 		g2.drawImage(background2, this.getBackgroundX2(), this.getBackgroundY(), this.width, this.height, null);	
+		
+		g2.drawImage(ground, this.getBackgroundX1(), 700, this.width, 75, null);
+		
+		g2.drawImage(ground, this.getBackgroundX2(), 700, this.width, 75, null);
 		
 		this.setBackgroundX1(this.getBackgroundX1() - this.getBACKGROUND_SPEED());
 		
