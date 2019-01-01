@@ -30,9 +30,14 @@ public class Pipes {
 	private int bottomOfPipe;
 
 	private int RECT_SPEED = 7;
+	
+	private int GROUND_SPEED = 4;
 
 	private int groundX = 0;
 	private int groundX2 = 600;
+	
+	private int bGroundX = 0;
+	private int bGroundX2 = 600;
 
 	Image ground;
 
@@ -114,15 +119,23 @@ public class Pipes {
 
 		g2.drawRect(this.xPos, -1, this.width, this.getHeight2());
 		
+		g2.drawImage(ground, this.bGroundX, 700, 630, 75, null);
+		
+		g2.drawImage(ground, this.bGroundX2, 700, 630, 75, null);
+		
 		g2.drawImage(ground, this.groundX, 700, 600, 75, null);
 
-		g2.drawImage(ground, this.groundX2, 700, 600, 75, null);
+		g2.drawImage(ground, this.groundX2, 700, 600, 75, null);		
 
 		this.xPos -= this.RECT_SPEED;
 
 		this.groundX -= this.RECT_SPEED;
 
 		this.groundX2 -= this.RECT_SPEED;
+		
+		this.bGroundX -= this.GROUND_SPEED;
+		
+		this.bGroundX2 -= this.GROUND_SPEED;
 
 		if(this.getxPos() + this.width <= 0) {
 
@@ -150,6 +163,10 @@ public class Pipes {
 		if(this.getGroundX() + 600 <= 0) this.setGroundX(600);
 		
 		if(this.getGroundX2() + 600 <= 0) this.setGroundX2(600);
+		
+		if(this.bGroundX + 600 <= 0) this.bGroundX = 600;
+		
+		if(this.bGroundX2 + 600 <= 0) this.bGroundX2 = 600;
 
 		if(this.RECT_SPEED >= 14) {
 
