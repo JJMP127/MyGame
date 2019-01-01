@@ -97,7 +97,9 @@ public class Pipes {
 		
 		else if(this.getScore() < 20) g2.setColor(Color.ORANGE);
 		
-		else g2.setColor(Color.RED);
+		else if(this.getScore() < 30) g2.setColor(Color.RED);
+		
+		else g2.setColor(colors[random.nextInt(colors.length - 1)]);
 
 		g2.fillRect(this.xPos, 800 - this.height1, this.width, this.getHeight1());
 			
