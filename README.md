@@ -1,2 +1,2 @@
-# MyGame
-My first game by myself. :)
+# "Beedrill Dash!"
+My first game made by myself. :)
