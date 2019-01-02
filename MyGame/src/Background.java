@@ -38,9 +38,7 @@ public class Background {
 	
 	public int authorNameY = random.nextInt(600) + 100;
 	
-	Color[] colors = {Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.WHITE, Color.RED, Color.PINK,Color.MAGENTA, Color.ORANGE};
-	
-	
+	Color[] colors = {Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.WHITE, Color.RED, Color.PINK,Color.MAGENTA, Color.ORANGE};	
 	
 	Ellipse2D.Double sun;
 	
