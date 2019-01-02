@@ -45,6 +45,8 @@ public class GameMain {
 		
 		mainFrame.setIconImage(icon);
 		
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		music.playSong(music.getAudioFile());
 		
 		while(!display.playerCrashed) {
