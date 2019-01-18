@@ -61,6 +61,8 @@ public class GameMain {
 		
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+	// plays the music. If there is an exception for  the music not playing, comment this line.
+		
 		music.playSong(music.getAudioFile());
 		
 	//update mechanism
