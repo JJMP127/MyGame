@@ -29,6 +29,8 @@ public class DisplayScreen extends JComponent{
 	static Player player = new Player(100,  400);
 	
 	static Pipes pipes = new Pipes();
+	
+	//draws everything in this class
 
 	public void paintComponent(Graphics g) {
 		

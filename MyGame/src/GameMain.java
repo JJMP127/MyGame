@@ -49,6 +49,8 @@ public class GameMain {
 		
 		mainFrame.add(display);
 		
+	//adds the keys to be used to the game	
+		
 		mainFrame.addKeyListener(display.getKeys());
 		
 		mainFrame.setVisible(true);
