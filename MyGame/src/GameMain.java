@@ -12,7 +12,11 @@ import javax.swing.JFrame;
  *
  */
 
+	//the class that runs the game 
+
 public class GameMain {
+	
+	//creates the things that will be used from other classes on this class
 	
 	public static DisplayScreen display;
 	
@@ -22,18 +26,26 @@ public class GameMain {
 
 	public static void main(String[] args) throws InterruptedException{	
 				
+	//uses image from the 'images' package
+		
 		try {
-			icon = ImageIO.read(new File("res/BeedrilIcon.png"));
+			icon = ImageIO.read(new File("res/images/BeedrilIcon.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}		
 		
+	//creates a new frame for the game with the title
+		
 		JFrame mainFrame = new JFrame("Beedrill Dash");
 		
 		display = new DisplayScreen();
 		
+	//sets the size of the game frame
+		
 		mainFrame.setSize(600, 800);
+		
+	//adds the display screen 	
 		
 		mainFrame.add(display);
 		
@@ -49,6 +61,8 @@ public class GameMain {
 		
 		music.playSong(music.getAudioFile());
 		
+	//update mechanism
+		
 		while(!display.playerCrashed) {
 			
 			mainFrame.repaint();
@@ -58,6 +72,8 @@ public class GameMain {
 		}
 		
 	}
+	
+	//a couple GETTERS
 	
 	public static DisplayScreen getDisplayScreen() {
 		

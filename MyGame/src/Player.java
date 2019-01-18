@@ -16,6 +16,8 @@ import javax.imageio.ImageIO;
  *
  */
 
+	//player class
+
 public class Player{
 	
 	Image playerImage;
@@ -32,14 +34,49 @@ public class Player{
 		this.x = x;
 		this.y = y;
 		
+	//uses the image of the player in the 'images' package
+		
 		try {
-			playerImage = ImageIO.read(new File("res/Beedrill.png"));
+			playerImage = ImageIO.read(new File("res/images/Beedrill.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}		
 
+	}
+	
+	//move up the player
+	
+	public void moveUp() {
+		
+		this.setY(this.getY() - 15);	
+		
+		if(this.getY() < 0) this.setY(5);	
+		
+		
+		
+	}
+	
+	//move down the player
+	
+	public void moveDown() {
+		
+		this.setY(this.getY() + 15);
+		
+		if(this.getY() + this.getSize() >= GameMain.getDisplayScreen().getHeight() - 75) this.setY(GameMain.getDisplayScreen().getHeight() - 60 - this.getSize());	
+		
 	}	
+	
+	//draws the player
+	
+	public void draw(Graphics g) {		
+		
+		g.drawImage(playerImage, this.x, this.y, this.getSize(), this.getSize(), null);
+	        
+
+	}
+	
+	//SETTERS and GETTERS
 
 	public int getX() {
 		return x;
@@ -88,50 +125,5 @@ public class Player{
 	public static void setGravity(int gravity) {
 		Player.gravity = gravity;
 	}
-	
-//	public static void fly() {
-//		
-//		y -= 70;
-//		
-//	}
-	
-	public void moveUp() {
 		
-		this.setY(this.getY() - 15);	
-		
-		if(this.getY() < 0) this.setY(5);	
-		
-		
-		
-	}
-	
-	public void moveDown() {
-		
-		this.setY(this.getY() + 15);
-		
-		if(this.getY() + this.getSize() >= GameMain.getDisplayScreen().getHeight() - 75) this.setY(GameMain.getDisplayScreen().getHeight() - 60 - this.getSize());	
-		
-	}	
-	
-	public void draw(Graphics g) {		
-
-//		Graphics2D graphics = (Graphics2D) g;
-//		
-//		Ellipse2D.Double bird = new Ellipse2D.Double(this.x, this.y, this.size, this.size);
-//		
-//		graphics.setColor(Color.RED);
-//		
-//		graphics.fill(bird);		
-//		
-//		graphics.setColor(Color.BLACK);
-//		
-//		graphics.draw(bird);
-		
-		g.drawImage(playerImage, this.x, this.y, this.getSize(), this.getSize(), null);
-	        
-
-	}
-	
 }	
-
-

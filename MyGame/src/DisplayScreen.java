@@ -10,7 +10,11 @@ import javax.swing.JComponent;
  *
  */
 
+	//the diplay screen 
+
 public class DisplayScreen extends JComponent{
+	
+//creates the things to be used on this class from other classes	
 	
 	public boolean downItGoes = false;
 	
@@ -32,15 +36,7 @@ public class DisplayScreen extends JComponent{
 			
 		Font font2 = new Font("IMPACT", Font.PLAIN, 20);
 		
-		Font font3 = new Font("IMPACT", Font.PLAIN, 30);
-		
-		Font font4 = new Font("Impact", Font.PLAIN, 20);
-		
-		g.setColor(Color.CYAN);
-		
-		g.fillRect(0, 0, 600, 800);
-		
-		g.setColor(Color.BLACK);
+	//draws the background, the pipes and the player on the screen	
 		
 		background.draw(g);
 		
@@ -52,11 +48,15 @@ public class DisplayScreen extends JComponent{
 		
 		g.setFont(font);
 		
+	//draws the score on the top right side of the screen 	
+		
 		g.drawString(Integer.toString(pipes.getScore()), this.getWidth() - 50, 50);
 		
 		g.setFont(font2);
 		
 		g.setColor(Color.WHITE);
+		
+	//draws instructions on the bottom of the screen 	
 		
 		g.drawString("Music by Tobu", 10, this.getHeight() - 10);
 		
@@ -68,14 +68,18 @@ public class DisplayScreen extends JComponent{
 		
 		if(keys.isEnterPressed()) player.moveUp();
 		
+	//activates little jump before the game over	
+		
 		if(pipes.playerCrashed(player)) {
 			
 			this.downItGoes = true;			
 			
 		}
 		
+	//make the little jump if player crashes	
+		
 		if(this.downItGoes) {
-			
+	
 			player.setY(player.getY() - 30);
 			
 			player.setVelocityY(player.getVelocityY() + player.getGravity());
@@ -83,6 +87,8 @@ public class DisplayScreen extends JComponent{
 			player.setY(player.getY() + player.getVelocityY());			
 			
 		}
+		
+	//activates game over message	
 		
 		if(player.getY() + player.getSize() > this.getHeight() + 100) {
 			
@@ -94,7 +100,7 @@ public class DisplayScreen extends JComponent{
 		
 	}
 	
-	
+	//a couple GETTERS
 	
 	public KeyStuff getKeys() {
 		

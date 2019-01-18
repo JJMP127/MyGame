@@ -15,6 +15,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  */
 
+
+	//class to manage the music
+
 public class MusicStuff {
 	
 	private  InputStream audioFile = getClass().getResourceAsStream("music/Tobu-Candyland.wav");

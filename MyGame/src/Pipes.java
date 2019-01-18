@@ -59,6 +59,8 @@ public class Pipes {
 		this.bottomOfPipe = this.topOfPipe - 150;
 		
 	}
+	
+	//if Player crashes
 
 	public boolean playerCrashed(Player player) {
 
@@ -81,13 +83,17 @@ public class Pipes {
 		return false;
 
 	}
+	
+	//draws everything in this class
 
 	public void draw(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
+		
+		//uses an image in the 'images' package
 
 		try {
-			ground = ImageIO.read(new File("res/ground2.png"));
+			ground = ImageIO.read(new File("res/images/ground2.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -127,7 +133,10 @@ public class Pipes {
 		
 		g2.drawImage(ground, this.groundX, 700, 600, 75, null);
 
-		g2.drawImage(ground, this.groundX2, 700, 600, 75, null);		
+		g2.drawImage(ground, this.groundX2, 700, 600, 75, null);	
+		
+		
+	//moves rectangles and ground to the left
 
 		this.xPos -= this.RECT_SPEED;
 
@@ -140,16 +149,21 @@ public class Pipes {
 		this.bGroundX2 -= this.GROUND_SPEED;
 
 		if(this.getxPos() + this.width <= 0) {
-
+			
+	//each multiple of 5 raises speeds by 1
+			
 			if(this.getScore() % 5 == 0) {
 
 				this.setPipeSpeed(this.getpipeSpeed() + 1);
 
 			}
 			
-//			if(this.getScore() > 9) DisplayScreen.getPlayer().setY(random.nextInt(600) + 200);
+			//score goes up 1
 
 			this.setScore(this.getScore() + 1);
+			
+	/*repositions the pipe back to the right side of the screen altering its height randomly
+	seeming as an infinite loop */
 
 			this.setxPos1(600);			
 			this.setHeight1(random.nextInt(700 - 100) + 100);
@@ -162,6 +176,8 @@ public class Pipes {
 
 		} 
 		
+	//repositions the ground back to the right side of the screen seeming as an infinite loop
+		
 		if(this.getGroundX() + 600 <= 0) this.setGroundX(600);
 		
 		if(this.getGroundX2() + 600 <= 0) this.setGroundX2(600);
@@ -170,6 +186,8 @@ public class Pipes {
 		
 		if(this.bGroundX2 + 600 <= 0) this.bGroundX2 = 600;
 
+	//makes the max speed of the rectangles 14
+		
 		if(this.RECT_SPEED >= 14) {
 
 			this.RECT_SPEED = 14;
@@ -177,6 +195,8 @@ public class Pipes {
 		}
 
 	}
+	
+	//SETTERS and GETTERS
 
 	public int getGroundX() {
 		return groundX;

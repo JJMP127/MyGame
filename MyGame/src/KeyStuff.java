@@ -8,6 +8,8 @@ import java.awt.event.KeyListener;
  *
  */
 
+	//class to manage the keys
+
 public class KeyStuff implements KeyListener{
 
 	private boolean spaceIsPressed = false;

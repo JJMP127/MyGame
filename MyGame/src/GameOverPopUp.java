@@ -9,7 +9,11 @@ import java.awt.Graphics;
  *
  */
 
+	//game over class
+
 public class GameOverPopUp {
+	
+	//creates the font that will be used for the game over message
 	
 	Font font = new Font("IMPACT",Font.BOLD, 40);
 	
@@ -18,7 +22,9 @@ public class GameOverPopUp {
 	Font font3 = new Font("IMPACT", Font.PLAIN, 30);
 	
 	Font font4 = new Font("Impact", Font.PLAIN, 20);
-
+	
+	//draws the game over box and message
+	
 	public void draw(Graphics g) {
 		
 		g.setColor(Color.WHITE);

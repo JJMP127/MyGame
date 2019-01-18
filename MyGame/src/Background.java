@@ -17,6 +17,8 @@ import javax.imageio.ImageIO;
  *
  */
 
+	//the background of the game
+
 public class Background {
 	
 	public int sunSize = 150;
@@ -34,11 +36,17 @@ public class Background {
 	
 	Random random = new Random();
 	
+	//X & Y coordinates for my signature
+	
 	public int authorNameX = 600;
 	
 	public int authorNameY = random.nextInt(600) + 100;
 	
+	//array of colors for my signature in the game
+	
 	Color[] colors = {Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.WHITE, Color.RED, Color.PINK,Color.MAGENTA, Color.ORANGE};	
+	
+	//creates the sun to give properties down bellow
 	
 	Ellipse2D.Double sun;
 	
@@ -48,24 +56,28 @@ public class Background {
 	
 	Image ground;
 	
+	//draws the background
+	
 	public void draw(Graphics g) {
 		
+	//uses the images from the 'images' packages
+		
 		try {
-			background = ImageIO.read(new File("res/background.png"));
+			background = ImageIO.read(new File("res/images/background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}	
 		
 		try {
-			background2 = ImageIO.read(new File("res/background.png"));
+			background2 = ImageIO.read(new File("res/images/background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}	
 		
 		try {
-			ground = ImageIO.read(new File("res/ground2.png"));
+			ground = ImageIO.read(new File("res/images/ground2.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -73,7 +85,13 @@ public class Background {
 		
 		Graphics2D g2 = (Graphics2D) g;
 		
+	//creates the actual sun
+		
 		sun = new Ellipse2D.Double(this.sunX, this.sunY, this.sunSize, this.sunSize);
+		
+		g2.setColor(Color.CYAN);
+		
+		g2.fillRect(0, 0, 600, 800);
 		
 		g2.setColor(Color.YELLOW);
 		
@@ -91,9 +109,15 @@ public class Background {
 		
 		this.setBackgroundX2(this.getBackgroundX2() - this.getBACKGROUND_SPEED());
 
+	//moves the sun to the left a certain speed	
+		
 		this.setSunX(this.getSunX() - this.getSUN_SPEED());
 		
+	//if the sun goes off-screen it resets its position to the right side of the screen 	
+		
 		if(this.getSunX() + this.getSunSize() <= 0) this.setSunX(600);
+		
+	//if the background goes off-screen it resets its position to the right side of the screen 	
 		
 		if(this.getBackgroundX1() + this.width <= 0) this.setBackgroundX1(600);
 		
@@ -101,11 +125,15 @@ public class Background {
 		
 		g2.setFont(new Font("IMPACT", Font.BOLD, 40));
 		
+	//moves signature to the left
+		
 		this.authorNameX -= 10;
 		
 		g2.setColor(colors[random.nextInt(colors.length - 1)]);
 		
 		g2.drawString("Made by: JJMP", this.authorNameX, this.authorNameY);
+		
+	//if signature goes off-screen, it's reset to the right side of the screen	
 		
 		if(this.authorNameX + 230 < 0) {
 				
@@ -116,6 +144,8 @@ public class Background {
 		}
 		
 	}
+	
+	//GETTERS and SETTERS
 
 	public int getSunSize() {
 		return sunSize;
@@ -190,7 +220,5 @@ public class Background {
 	public void setSun(Ellipse2D.Double sun) {
 		this.sun = sun;
 	}
-	
-	
 
 }
